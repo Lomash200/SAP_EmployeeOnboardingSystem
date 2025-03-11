@@ -1,0 +1,37 @@
+CREATE DATABASE employee_management;
+
+USE employee_management;
+
+-- Table for Employee Master Data
+CREATE TABLE employees (
+    employee_id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100),
+    address VARCHAR(200),
+    department VARCHAR(50),
+    position VARCHAR(50)
+);
+
+-- Table for Payroll Data
+CREATE TABLE payroll (
+    employee_id VARCHAR(10),
+    basic_salary DOUBLE,
+    allowances DOUBLE,
+    deductions DOUBLE,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
+
+-- Table for Time Management Data
+CREATE TABLE time_management (
+    employee_id VARCHAR(10),
+    work_schedule VARCHAR(100),
+    attendance INT,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
+
+-- Table for Leave Management
+CREATE TABLE leave_management (
+    employee_id VARCHAR(10),
+    leave_type VARCHAR(50),
+    leave_days INT,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
